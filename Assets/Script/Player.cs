@@ -11,7 +11,14 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKey(KeyCode.A)) {
+        PlayerMovement();
+       
+    }
+
+    public void PlayerMovement()
+    {
+        if (Input.GetKey(KeyCode.A))
+        {
             rb.AddForce(new Vector3(-Diraction, 0, 0));
         }
         if (Input.GetKey(KeyCode.D))
@@ -20,6 +27,5 @@ public class Player : MonoBehaviour
         }
 
         rb.AddForce(new Vector3(0, 0, Speed));
-       
     }
 }
