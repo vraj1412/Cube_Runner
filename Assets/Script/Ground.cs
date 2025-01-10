@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-    public GameObject[]  GroundPrefabes;
-    public float ZSpwan = 0;
-    public float GroundLentgh = 30;
-    public int NumOfGround = 2;
+  
     public Transform PlayerTransform;
     public Transform Obstacal1;
     public Transform Obstacal2;
-    
+    public Transform Obstacal4;
+    public Transform Obstacal3;
+
+
     public bool IsActive= false;
 
     public GamePlayManagar Ref_GamePlayManagar;
@@ -20,33 +20,19 @@ public class Ground : MonoBehaviour
     public void Start()
     {
         Ref_GamePlayManagar = GamePlayManagar.Instance;
-        //for (int i = 0; i < NumOfGround; i++)
-        //{
-        //    SpwanGround(i);
-        //}
+       
     }
-    public void Update()
-    {
-        //if (PlayerTransform.position.z  > ZSpwan  - (NumOfGround * GroundLentgh))
-        //{
-        //    SpwanGround(Random.Range(0, 2));
-        //}
-        
-    }
+    
 
     
-    public void SpwanGround(int Index)
-    {
-        Instantiate(GroundPrefabes[Index], transform.forward * ZSpwan,transform.rotation);
-        ZSpwan += GroundLentgh;
-    }
-
+   
     public void OnCollisionEnter(Collision collision)
     {
-       // Debug.Log(collision.gameObject.tag);
+       
+
         if (collision.gameObject.tag == "Player")
         {
-            IsActive =true;
+            IsActive = true;
         }
     }
 
@@ -62,8 +48,12 @@ public class Ground : MonoBehaviour
 
             Obstacal1.localPosition = new Vector3(GetXPostion(), 1, Random.Range(-0.4f , 0.0f));
             Obstacal2.localPosition = new Vector3(GetXPostion(), 1, Random.Range(0.0f, 0.5f));
+            Obstacal3.localPosition = new Vector3(GetXPostion(), 1, Random.Range(-0.4f, 0.0f));
+            Obstacal4.localPosition = new Vector3(GetXPostion(), 1, Random.Range(0.0f, 0.5f));
         }
     }
+
+    
 
     public float GetXPostion()
     {
@@ -82,5 +72,7 @@ public class Ground : MonoBehaviour
         }
 
     }
+
+    
 
 }

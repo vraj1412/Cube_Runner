@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,31 +5,37 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
     public float Speed = 10.0f;
     public float Diraction = 20;
+    public GameObject GameOverBG;
 
     public void Update()
     {
         PlayerMovement();
     }
-    public void FixedUpdate()
-    {
-        //PlayerMovement();
-        
-    }
+    
+
+ 
     public void PlayerMovement()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(new Vector3(-Diraction, 0, 0));
+            rb.AddForce(new Vector3(-Diraction * Time.deltaTime, 0, 0),ForceMode.VelocityChange);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(new Vector3(Diraction, 0, 0));
+            rb.AddForce(new Vector3(Diraction * Time.deltaTime, 0, 0), ForceMode.VelocityChange);
         }
-        if (Input.GetKey(KeyCode.X))
-        {
-            rb.AddForce(new Vector3(0, 0, -11f));
-        }
-
+       
         rb.AddForce(new Vector3(0, 0, Speed));
     }
+    public void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.collider.tag == "Obstacle")
+        {
+
+            GameOverBG.SetActive(true);
+
+        }
+    }
+
 }
