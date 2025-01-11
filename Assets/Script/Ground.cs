@@ -6,7 +6,7 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
   
-    public Transform PlayerTransform;
+   // public Transform PlayerTransform;
     public Transform Obstacal1;
     public Transform Obstacal2;
     public Transform Obstacal4;
@@ -46,10 +46,10 @@ public class Ground : MonoBehaviour
 
 
 
-            Obstacal1.localPosition = new Vector3(GetXPostion(), 1, Random.Range(-0.4f , 0.0f));
-            Obstacal2.localPosition = new Vector3(GetXPostion(), 1, Random.Range(0.0f, 0.5f));
-            Obstacal3.localPosition = new Vector3(GetXPostion(), 1, Random.Range(-0.4f, 0.0f));
-            Obstacal4.localPosition = new Vector3(GetXPostion(), 1, Random.Range(0.0f, 0.5f));
+            Obstacal1.localPosition = new Vector3(GetXPostion(), 1, Random.Range(-0.4f , -2.0f));
+            Obstacal2.localPosition = new Vector3(GetXPostion(), 1, Random.Range(-2.0f, 0.0f));
+            Obstacal3.localPosition = new Vector3(GetXPostion(), 1, Random.Range(0.0f, 0.02f));
+            Obstacal4.localPosition = new Vector3(GetXPostion(), 1, Random.Range(0.2f, 0.5f));
         }
     }
 
